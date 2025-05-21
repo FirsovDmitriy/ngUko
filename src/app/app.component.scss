@@ -1,0 +1,15 @@
+@import '@taiga-ui/core/styles/taiga-ui-local.scss';
+
+.container {
+  padding: 1rem;
+}
+
+.form {
+  margin-bottom: 40px;
+}
+
+.wrapper {
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  display: grid;
+}
