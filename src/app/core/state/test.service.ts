@@ -12,7 +12,7 @@ export class TestService {
 
   constructor(private store: TestStore) {}
 
-  characters() {
+  items() {
     const items = localStorage.getItem('characters')
     if(items) {
       this.store.update({ items: JSON.parse(items) })

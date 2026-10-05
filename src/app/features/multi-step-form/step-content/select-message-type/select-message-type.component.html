@@ -1,0 +1,27 @@
+<div>
+  <div class="flex gap-6">
+    <label class="flex items-center" tuiLabel>
+      <input
+        name="message-type"
+        size="s"
+        tuiRadio
+        type="radio"
+        [formControl]="messageType"
+        [value]="'email'"
+      />
+      <span class="block text-sm font-medium text-gray-700">Email</span>
+    </label>
+
+    <label class="flex items-center">
+      <input
+        name="message-type"
+        size="m"
+        tuiRadio
+        type="radio"
+        [formControl]="messageType"
+        [value]="'sms'"
+      />
+      <span class="block text-sm font-medium text-gray-700">Mobile push</span>
+    </label>
+  </div>
+</div>

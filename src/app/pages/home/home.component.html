@@ -1,0 +1,15 @@
+<div>
+  <form class="" [formGroup]="searchForm">
+    <tui-input formControlName="value">
+      Search...
+      <input tuiTextfield type="text" />
+    </tui-input>
+  </form>
+  <ul>
+    @for (item of filtered | async; track $index) {
+      <li>
+        {{ item }}
+      </li>
+    }
+  </ul>
+</div>

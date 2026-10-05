@@ -1,6 +1,4 @@
 import { TuiRootModule } from "@taiga-ui/core";
-// import { provideEventPlugins } from '@taiga-ui/event-plugins';
-// import { TuiRoot } from '@taiga-ui/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   ApplicationConfig,
@@ -18,7 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     importProvidersFrom(TuiRootModule),
-    // provideEventPlugins(),
     provideHttpClient()
   ],
 };

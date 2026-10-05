@@ -1,11 +1,22 @@
-<section class="nav-bar">
+<aside class="p-4">
   <ul>
     <li>
-      <tui-accordion class="container">
+      <tui-accordion>
         <tui-accordion-item>
           CRM
           <ng-template tuiAccordionItemContent>
-            CRM
+            <ul>
+              <li>
+                <a routerLink="/message-builder">
+                  Message builder
+                </a>
+              </li>
+              <li>
+                <a routerLink="/list-goods">
+                  List goods
+                </a>
+              </li>
+            </ul>
           </ng-template>
         </tui-accordion-item>
         <tui-accordion-item>
@@ -15,6 +26,11 @@
               <li>Ecommerce</li>
               <li>File Manager</li>
               <li>Support</li>
+              <li>
+                <a routerLink="/todo">
+                  Todo
+                </a>
+              </li>
             </ul>
           </ng-template>
         </tui-accordion-item>
@@ -28,10 +44,15 @@
               <li>
                 Email Details
               </li>
+              <li>
+                <a routerLink="/email">
+                  Create Email
+                </a>
+              </li>
             </ul>
           </ng-template>
         </tui-accordion-item>
       </tui-accordion>
     </li>
   </ul>
-</section>
+</aside>

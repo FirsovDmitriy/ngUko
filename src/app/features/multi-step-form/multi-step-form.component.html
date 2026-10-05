@@ -1,0 +1,23 @@
+<uko-stepper
+  [items]="['Выбор типа сообщения', 'Step 2', 'Step 3']"
+  (onStepChange)="setActiveIndex($event)"
+  [activeIndex]="currentIndex()"
+>
+  <uko-step>
+    <uko-select-message-type></uko-select-message-type>
+  </uko-step>
+
+  <uko-step>
+    <uko-message-editor></uko-message-editor>
+  </uko-step>
+
+  <uko-step>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">City</label>
+        <input type="text" class="form-control" />
+      </div>
+      <!-- Сюда же State и Zip -->
+    </form>
+  </uko-step>
+</uko-stepper>

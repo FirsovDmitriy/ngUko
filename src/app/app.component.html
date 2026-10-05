@@ -1,28 +1,3 @@
 <tui-root>
-  <div class="wrapper">
-    <app-nav-bar></app-nav-bar>
-    <main class="container">
-      <form class="form" [formGroup]="formKeyValue">
-        <app-multiple-text-field formControlName="value" />
-      </form>
-      <p>
-        {{ formKeyValue.value.value | json }}
-      </p>
-      <div>
-        <form class="" [formGroup]="searchForm">
-          <tui-input formControlName="value">
-            Search...
-            <input tuiTextfield type="text" />
-          </tui-input>
-        </form>
-        <ul>
-          @for (item of foo | async; track $index) {
-            <li>
-              {{ item }}
-            </li>
-          }
-        </ul>
-      </div>
-    </main>
-  </div>
+  <default-layout class="wrapper"></default-layout>
 </tui-root>
