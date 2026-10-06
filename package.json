@@ -32,6 +32,7 @@
     "@tailwindcss/postcss": "^4.3.2",
     "@tanstack/angular-table": "^8.21.3",
     "@tinkoff/ng-dompurify": "4.0.0",
+    "@tinkoff/ng-polymorpheus": "^4.3.0",
     "centrifuge": "^5.4.0",
     "dompurify": "3.0.6",
     "postcss": "^8.5.16",

@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 export const messageTypeSchema = z.object({
-  messageType: z.enum(['email', 'web_push']),
+  messageType: z.enum(['email', 'webPush', 'mobilePush']),
 })
 
 export type MessageType = z.infer<typeof messageTypeSchema>
@@ -15,7 +15,7 @@ export const contentMessageSchema = z.discriminatedUnion('messageType', [
     subject: z.string().trim().nonempty(),
   }),
   z.object({
-    messageType: z.literal('web_push'),
+    messageType: z.literal('webPush'),
   }),
 ])
 

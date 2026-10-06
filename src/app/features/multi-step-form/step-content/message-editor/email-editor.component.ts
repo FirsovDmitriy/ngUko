@@ -7,11 +7,19 @@ import {
 } from '@angular/forms'
 import { TuiInputModule } from '@taiga-ui/kit'
 import { TextfieldComponent } from '../../../../ui-kit/textfield/text-field.component'
+import { TuiButtonModule } from '@taiga-ui/core'
+import { CodeHtmlComponent } from './code-html.component'
 
 @Component({
   selector: 'uko-email-editor',
   standalone: true,
-  imports: [ReactiveFormsModule, TuiInputModule, TextfieldComponent],
+  imports: [
+    ReactiveFormsModule,
+    TuiInputModule,
+    TextfieldComponent,
+    TuiButtonModule,
+    CodeHtmlComponent
+  ],
   templateUrl: './email-editor.component.html',
 })
 export class EmailEditorComponent {
@@ -30,6 +38,7 @@ export class EmailEditorComponent {
     template: this.fb.nonNullable.control('', Validators.required),
     emailCc: this.fb.nonNullable.control(''),
     emailBcc: this.fb.nonNullable.control(''),
+
     attachments: this.fb.array([]),
   })
 }

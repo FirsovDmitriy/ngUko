@@ -1,1 +1,9 @@
-<p>dialog works!</p>
+<header></header>
+<section>
+  <ng-container
+    *polymorpheusOutlet="context.content as text; context: context"
+  >
+    {{ text }}
+  </ng-container>
+</section>
+<footer></footer>
