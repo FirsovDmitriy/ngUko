@@ -1,16 +1,16 @@
+import { TuiBlock, TuiRadio } from "@taiga-ui/kit";
+import { TuiGroup } from "@taiga-ui/core";
 import { Component, inject, OnInit } from '@angular/core'
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms'
-import { TuiRadioBlockModule } from '@taiga-ui/kit'
 import { MultiStepFormManager } from '../../_state/multi-step-form.manager'
-import { TuiGroupModule } from '@taiga-ui/core'
 import { ErrorTextComponent } from '../../../../ui-kit/error-text/error-text.component'
 
 @Component({
   selector: 'uko-select-message-type',
   imports: [
     ReactiveFormsModule,
-    TuiGroupModule,
-    TuiRadioBlockModule,
+    TuiGroup,
+    TuiBlock, TuiRadio,
     ErrorTextComponent,
   ],
   templateUrl: './select-message-type.component.html',

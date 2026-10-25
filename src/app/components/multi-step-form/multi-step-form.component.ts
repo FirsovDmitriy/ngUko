@@ -1,3 +1,4 @@
+import { TuiStepper } from "@taiga-ui/kit";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -7,7 +8,6 @@ import {
   signal,
 } from '@angular/core'
 import { StepperComponent, StepComponent } from '../../ui-kit/stepper'
-import { TuiStepperModule } from '@taiga-ui/kit'
 import { SelectMessageTypeComponent } from './step-content/select-message-type/select-message-type.component'
 import { MultiStepFormManager } from './_state/multi-step-form.manager'
 import { EditorFormService } from './services/editor-form.service'
@@ -29,7 +29,7 @@ import { CommonStepComponent } from './step-content/common-step/common-step.comp
     ReactiveFormsModule,
     SelectMessageTypeComponent,
     StepperComponent,
-    TuiStepperModule,
+    TuiStepper,
     StepComponent,
     MessageEditorComponent,
     CommonStepComponent

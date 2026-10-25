@@ -1,14 +1,9 @@
+import { PolymorpheusTemplate, PolymorpheusOutlet } from "@taiga-ui/polymorpheus";
 import { Component, DestroyRef, inject, signal } from '@angular/core'
+import { TuiDialogContext, TuiDialogService, TuiDialogSize, TuiButton } from '@taiga-ui/core'
 import {
-  TuiButtonModule,
-  TuiDialogContext,
-  TuiDialogService,
-  TuiDialogSize,
-} from '@taiga-ui/core'
-import {
-  PolymorpheusContent,
-  PolymorpheusModule,
-} from '@tinkoff/ng-polymorpheus'
+  PolymorpheusContent
+} from '@taiga-ui/polymorpheus'
 import { CodeEditor } from '@acrodata/code-editor'
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
@@ -19,9 +14,9 @@ import { steps } from '../../constants'
 @Component({
   selector: 'uko-code-html',
   imports: [
-    TuiButtonModule,
+    TuiButton,
     ReactiveFormsModule,
-    PolymorpheusModule,
+    PolymorpheusTemplate, PolymorpheusOutlet,
     CodeEditor,
   ],
   templateUrl: './code-html.template.html',

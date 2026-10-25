@@ -1,8 +1,8 @@
+import { TuiInputModule } from "@taiga-ui/legacy";
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, map, Observable, of, switchMap } from 'rxjs';
 import { AsyncPipe, DOCUMENT } from '@angular/common';
-import { TuiInputModule } from '@taiga-ui/kit';
 
 @Component({
     selector: 'app-home',

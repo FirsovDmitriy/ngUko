@@ -1,3 +1,4 @@
+import { PolymorpheusTemplate, PolymorpheusOutlet } from "@taiga-ui/polymorpheus";
 import {
   Component,
   computed,
@@ -11,14 +12,13 @@ import {
 import { toObservable, toSignal } from '@angular/core/rxjs-interop'
 import { AbstractControl } from '@angular/forms'
 import {
-  PolymorpheusContent,
-  PolymorpheusModule,
-} from '@tinkoff/ng-polymorpheus'
+  PolymorpheusContent
+} from '@taiga-ui/polymorpheus'
 import { map, switchMap } from 'rxjs'
 
 @Component({
   selector: 'uko-error-text',
-  imports: [PolymorpheusModule],
+  imports: [PolymorpheusTemplate, PolymorpheusOutlet],
   templateUrl: './error-text.component.html',
   providers: [],
 })

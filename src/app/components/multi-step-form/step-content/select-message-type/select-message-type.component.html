@@ -1,31 +1,31 @@
 <h1 class="mb-2 text-gray-900 text-2xl">Выбор типа сообщения</h1>
 <form class="relative grid grid-cols-[1fr_2fr]">
   <div class="" tuiGroup [collapsed]="true">
-    <tui-radio-block
-      contentAlign="right"
+   <label tuiBlock="m"> <input tuiRadio type="radio"
+      
       name="message-type"
-      size="m"
+      
       [formControl]="messageType"
-      item="email"
+      value="email"
     >
       Email
-    </tui-radio-block>
-    <tui-radio-block
-      contentAlign="right"
+    </label>
+   <label tuiBlock="m"> <input tuiRadio type="radio"
+      
       [formControl]="messageType"
-      size="m"
-      item="mobilePush"
+      
+      value="mobilePush"
     >
       Mobile push
-    </tui-radio-block>
-    <tui-radio-block
-      contentAlign="right"
+    </label>
+   <label tuiBlock="m"> <input tuiRadio type="radio"
+      
       [formControl]="messageType"
-      size="m"
-      item="webPush"
+      
+      value="webPush"
     >
       Web push
-    </tui-radio-block>
+    </label>
   </div>
   <uko-error-text
     [control]="messageType"

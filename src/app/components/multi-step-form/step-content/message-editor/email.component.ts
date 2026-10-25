@@ -1,3 +1,6 @@
+import { TuiInputModule } from "@taiga-ui/legacy";
+import { TuiButton } from "@taiga-ui/core";
+import { TuiEditor, TuiEditorSocket } from "@taiga-ui/editor";
 import { ChangeDetectionStrategy, Component, inject, INJECTOR, Injector } from '@angular/core'
 import {
   FormArray,
@@ -7,13 +10,9 @@ import {
   Validators,
 } from '@angular/forms'
 import {
-  TuiEditorModule,
-  TuiEditorSocketModule,
   TuiEditorTool,
-} from '@taiga-ui/addon-editor'
+} from '@taiga-ui/editor'
 import { DomSanitizer } from '@angular/platform-browser'
-import { TuiInputModule } from '@taiga-ui/kit'
-import { TuiButtonModule } from '@taiga-ui/core'
 import { CodeHtmlComponent } from './code-html.component'
 import { MultiStepFormManager } from '../../_state/multi-step-form.manager'
 import { steps } from '../../constants'
@@ -23,15 +22,13 @@ import { TextfieldComponent } from '../../../../ui-kit/textfield'
 @Component({
   selector: 'uko-email',
   imports: [
-    TuiEditorSocketModule,
-    TuiEditorModule,
+    TuiEditorSocket,
+    TuiEditor,
     ReactiveFormsModule,
-    TuiButtonModule,
+    TuiButton,
     ErrorTextComponent,
     TextfieldComponent,
-    TuiInputModule,
-    TuiButtonModule,
-    CodeHtmlComponent,
+    CodeHtmlComponent
   ],
   templateUrl: './email.template.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

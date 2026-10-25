@@ -7,13 +7,13 @@ import {
   input,
   signal,
 } from '@angular/core'
-import { TuiButtonModule, TuiGroupModule } from '@taiga-ui/core'
+import { TuiGroup, TuiButton } from '@taiga-ui/core'
 import { MultiStepFormManager } from '../../multi-step-form/_state/multi-step-form.manager'
 import { steps } from '../../multi-step-form/constants'
 
 @Component({
   selector: 'uko-email-preview',
-  imports: [TuiButtonModule, TuiGroupModule, NgClass],
+  imports: [TuiButton, TuiGroup, NgClass],
   templateUrl: './email-preview.template.html',
 })
 export class EmailPreviewComponent {

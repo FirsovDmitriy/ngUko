@@ -1,4 +1,4 @@
-import {TuiInputModule} from '@taiga-ui/kit';
+import { TuiInputModule } from "@taiga-ui/legacy";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

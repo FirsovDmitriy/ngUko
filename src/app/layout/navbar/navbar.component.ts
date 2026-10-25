@@ -1,10 +1,10 @@
+import { TuiAccordion } from "@taiga-ui/kit";
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {TuiAccordionModule} from '@taiga-ui/kit';
 
 @Component({
     selector: 'uko-navbar',
-    imports: [TuiAccordionModule, RouterLink],
+    imports: [TuiAccordion, RouterLink],
     templateUrl: './navbar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })

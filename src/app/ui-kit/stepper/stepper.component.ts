@@ -1,3 +1,5 @@
+import { TuiButton } from "@taiga-ui/core";
+import { TuiStepper } from "@taiga-ui/kit";
 import {
   AfterContentInit,
   Component,
@@ -6,14 +8,12 @@ import {
   input,
   output,
 } from '@angular/core'
-import { TuiStepperModule } from '@taiga-ui/kit'
 import { NgTemplateOutlet } from '@angular/common'
 import { StepComponent } from './step.component'
-import { TuiButtonModule } from '@taiga-ui/core'
 
 @Component({
   selector: 'uko-stepper',
-  imports: [TuiStepperModule, NgTemplateOutlet, TuiButtonModule],
+  imports: [TuiStepper, NgTemplateOutlet, TuiButton],
   templateUrl: './stepper.component.html',
 })
 export class StepperComponent implements AfterContentInit {

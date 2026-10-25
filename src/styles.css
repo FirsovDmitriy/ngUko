@@ -1,5 +1,5 @@
 @import "tailwindcss";
 
 :root {
-  --tui-base-01: oklch(98.5% 0 none);
+  --tui-background-base: oklch(98.5% 0 none);
 }

@@ -15,7 +15,7 @@ import {
   NG_VALUE_ACCESSOR,
   NgControl,
 } from '@angular/forms'
-import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus'
+import { PolymorpheusContent } from '@taiga-ui/polymorpheus'
 
 @Component({
   selector: 'uko-textfield',

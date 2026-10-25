@@ -1,5 +1,6 @@
-import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
-import { TuiRootModule, TuiDialogModule, TUI_SANITIZER } from '@taiga-ui/core';
+import { TUI_SANITIZER } from "@taiga-ui/legacy";
+import { NgDompurifySanitizer } from '@taiga-ui/dompurify';
+import { TuiRoot, TuiDialog } from '@taiga-ui/core';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -12,10 +13,9 @@ import { DefaultLayoutComponent } from './layout/default-layout.component';
 @Component({
     selector: 'app-root',
     imports: [
-        TuiRootModule,
+        TuiRoot,
         ReactiveFormsModule,
-        TuiRootModule,
-        TuiDialogModule,
+        TuiDialog,
         DefaultLayoutComponent
     ],
     templateUrl: './app.component.html',
