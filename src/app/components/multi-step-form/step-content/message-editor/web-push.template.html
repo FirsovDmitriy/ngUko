@@ -1,0 +1,168 @@
+<div class="min-h-screen bg-gray-100 p-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-6">
+      <h1 class="text-2xl text-gray-900">Редактор Web Push уведомления</h1>
+      <p class="text-gray-600 mt-2">Настройте параметры Web Push уведомления</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <!-- Preview -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          Предпросмотр
+        </h2>
+        <div
+          class="border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center min-h-[300px] text-gray-400"
+        >
+          <div class="text-center">
+            <p class="text-sm">
+              Здесь будет отображаться предпросмотр уведомления
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          Настройки
+        </h2>
+        @if (webPushForm; as form) {
+          <form [formGroup]="form" class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Заголовок <span class="text-red-500">*</span>
+                <input
+                  formControlName="webPushTitle"
+                  type="text"
+                  placeholder="Заголовок уведомления"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </label>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Текст <span class="text-red-500">*</span>
+                <textarea
+                  formControlName="webPushBody"
+                  rows="3"
+                  placeholder="Текст уведомления"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                ></textarea>
+              </label>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Иконка (URL, HTTPS) <span class="text-red-500">*</span>
+                <input
+                  formControlName="webPushIcon"
+                  type="text"
+                  placeholder="https://example.com/icon.png"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </label>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                Изображение (URL, HTTPS, необязательно)
+                <input
+                  formControlName="webPushImage"
+                  type="text"
+                  placeholder="https://example.com/image.png"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </label>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                URL для клика <span class="text-red-500">*</span>
+                <input
+                  formControlName="webPushTargetUrl"
+                  type="text"
+                  placeholder="https://example.com/target"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </label>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                TTL (секунды, необязательно)
+                <input
+                  formControlName="webPushTTL"
+                  type="number"
+                  placeholder="3600"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                />
+              </label>
+            </div>
+            <div class="border-t border-gray-200 pt-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-medium text-gray-900">Действия</h3>
+                <button
+                  type="button"
+                  (click)="addAction()"
+                  class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Добавить действие
+                </button>
+              </div>
+
+              <div formArrayName="actions">
+                @for (
+                  action of actions?.controls ?? [];
+                  track $index;
+                  let i = $index
+                ) {
+                  <div
+                    [formGroupName]="i"
+                    class="border border-gray-200 p-4 mb-4 rounded-lg space-y-4"
+                  >
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Название действия <span class="text-red-500">*</span>
+                        <input
+                          formControlName="actionTitle"
+                          type="text"
+                          placeholder="Открыть"
+                          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                        />
+                      </label>
+                    </div>
+                    <div>
+                      <label
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        URL действия <span class="text-red-500">*</span>
+                        <input
+                          formControlName="actionUrl"
+                          type="text"
+                          placeholder="https://example.com/action"
+                          class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                        />
+                      </label>
+                    </div>
+                    <button
+                      type="button"
+                      (click)="removeAction(i)"
+                      class="text-sm text-red-600 hover:text-red-800"
+                    >
+                      Удалить действие
+                    </button>
+                  </div>
+                }
+              </div>
+
+              @if (!actions?.length) {
+                <p class="text-sm text-gray-500">Нет добавленных действий</p>
+              }
+            </div>
+          </form>
+        }
+      </div>
+    </div>
+  </div>
+</div>

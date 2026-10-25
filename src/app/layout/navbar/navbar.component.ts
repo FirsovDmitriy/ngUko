@@ -4,10 +4,8 @@ import {TuiAccordionModule} from '@taiga-ui/kit';
 
 @Component({
     selector: 'uko-navbar',
-    standalone: true,
-    // exportAs: "",
     imports: [TuiAccordionModule, RouterLink],
     templateUrl: './navbar.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export default class NavbarComponent {}

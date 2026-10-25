@@ -1,0 +1,34 @@
+<h1 class="mb-2 text-gray-900 text-2xl">Выбор типа сообщения</h1>
+<form class="relative grid grid-cols-[1fr_2fr]">
+  <div class="" tuiGroup [collapsed]="true">
+    <tui-radio-block
+      contentAlign="right"
+      name="message-type"
+      size="m"
+      [formControl]="messageType"
+      item="email"
+    >
+      Email
+    </tui-radio-block>
+    <tui-radio-block
+      contentAlign="right"
+      [formControl]="messageType"
+      size="m"
+      item="mobilePush"
+    >
+      Mobile push
+    </tui-radio-block>
+    <tui-radio-block
+      contentAlign="right"
+      [formControl]="messageType"
+      size="m"
+      item="webPush"
+    >
+      Web push
+    </tui-radio-block>
+  </div>
+  <uko-error-text
+    [control]="messageType"
+    errorText="This field is required"
+  ></uko-error-text>
+</form>

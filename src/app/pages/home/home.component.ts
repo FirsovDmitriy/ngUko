@@ -1,16 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, map, Observable, of, switchMap } from 'rxjs';
-import { TestQuery } from '../../core/state/test.query';
-import { TestService } from '../../core/state/test.service';
 import { AsyncPipe, DOCUMENT } from '@angular/common';
 import { TuiInputModule } from '@taiga-ui/kit';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, TuiInputModule],
-  templateUrl: './home.component.html'
+    selector: 'app-home',
+    imports: [ReactiveFormsModule, AsyncPipe, TuiInputModule],
+    templateUrl: './home.component.html'
 })
 export class HomeComponent {
   searchQuery: string | null = '';
@@ -25,15 +22,10 @@ export class HomeComponent {
 
   constructor(
     private fb: FormBuilder,
-    private query: TestQuery,
-    private testService: TestService,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit(): void {
-    this.characters$ = this.query.items$;
-
-    this.testService.items();
 
     this.searchForm
       .get('value')

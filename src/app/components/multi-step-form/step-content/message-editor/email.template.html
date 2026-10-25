@@ -1,0 +1,162 @@
+@let form = emailForm;
+
+<div class="min-h-screen">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-6">
+      <h1 class="text-2xl text-gray-900">Редактор Email сообщения</h1>
+      <p class="text-gray-600 mt-2">
+        Настройте параметры письма и просмотрите результат
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="bg-zinc-50 rounded-lg shadow-lg">
+        @if (safeTemplate) {
+        <iframe
+          class="w-full"
+          [srcdoc]="safeTemplate"
+          sandbox="allow-popups"
+          loading="lazy"
+        ></iframe>
+        } @else {
+        <div
+          class="w-full flex flex-col items-center justify-center p-6 text-center"
+        >
+          <h3 class="text-base font-semibold text-gray-800">
+            Шаблон письма пуст
+          </h3>
+          <p class="mt-1 text-sm text-gray-500 max-w-xs mb-4">
+            Здесь будет предпросмотр. Начните писать код или загрузите готовый
+            адаптивный макет.
+          </p>
+          <button
+            tuiButton
+            size="s"
+            (click)="loadDefaultTemplate()"
+            type="button"
+          >
+            Загрузить базовый макет
+          </button>
+        </div>
+        }
+      </div>
+
+      <div class="bg-zinc-50 rounded-lg shadow-lg p-6">
+        <h2 class="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+          Настройки
+        </h2>
+
+        @if (form) {
+        <form [formGroup]="form" class="space-y-6">
+          <div class="relative">
+            <uko-textfield
+              formControlName="subject"
+              type="text"
+              name="subject"
+              placeholder="Тема письма"
+              label="Тема письма"
+              [required]="true"
+            ></uko-textfield>
+            <uko-error-text
+              errorText="This field is required"
+              [control]="form.controls['subject']"
+            ></uko-error-text>
+          </div>
+          <div class="relative">
+            <uko-textfield
+              formControlName="emailFrom"
+              type="email"
+              placeholder="sender@example.com"
+              [required]="true"
+              label="От кого"
+            ></uko-textfield>
+            <uko-error-text
+              errorText="This field is required"
+              [control]="form.controls['emailFrom']"
+            ></uko-error-text>
+          </div>
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Получатели <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              formControlName="recipients"
+              name="recipients"
+              rows="3"
+              placeholder="recipient1@example.com, recipient2@example.com"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            ></textarea>
+            <p class="mt-1 text-xs text-gray-500">
+              Разделяйте адреса запятой или переносом строки
+            </p>
+            <uko-error-text
+              errorText="This field is required"
+              [control]="form.controls['recipients']"
+            ></uko-error-text>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Копия (CC)
+            </label>
+            <textarea
+              formControlName="emailCc"
+              name="emailCc"
+              rows="2"
+              placeholder="cc1@example.com, cc2@example.com"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            ></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Скрытая копия (BCC)
+            </label>
+            <textarea
+              formControlName="emailBcc"
+              name="emailBcc"
+              rows="2"
+              placeholder="bcc1@example.com, bcc2@example.com"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            ></textarea>
+          </div>
+          <div class="relative">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              Шаблон письма <span class="text-red-500">*</span>
+            </label>
+            <div class="flex justify-center">
+              <uko-code-html></uko-code-html>
+              <uko-error-text
+                errorText="This field is required"
+                [control]="form.controls['emailTemplate']"
+              ></uko-error-text>
+
+              <!-- <tui-editor
+              formControlName="emailTemplate"
+              [tools]="tools"
+            ></tui-editor> -->
+
+            </div>
+          </div>
+          <div class="border-t border-gray-200 pt-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-medium text-gray-900">Вложения</h3>
+              <button
+                type="button"
+                size="s"
+                tuiButton
+                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Добавить вложение
+              </button>
+            </div>
+            <div
+              class="text-center py-8 text-gray-400 border-2 border-dashed border-gray-300 rounded-lg"
+            >
+              <p class="text-sm">Нет вложений</p>
+            </div>
+          </div>
+        </form>
+        }
+      </div>
+    </div>
+  </div>
+</div>

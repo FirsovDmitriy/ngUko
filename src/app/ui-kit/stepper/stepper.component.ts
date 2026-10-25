@@ -1,13 +1,10 @@
 import {
   AfterContentInit,
   Component,
-  computed,
   contentChildren,
   effect,
   input,
   output,
-  signal,
-  TemplateRef,
 } from '@angular/core'
 import { TuiStepperModule } from '@taiga-ui/kit'
 import { NgTemplateOutlet } from '@angular/common'
@@ -16,38 +13,60 @@ import { TuiButtonModule } from '@taiga-ui/core'
 
 @Component({
   selector: 'uko-stepper',
-  standalone: true,
   imports: [TuiStepperModule, NgTemplateOutlet, TuiButtonModule],
   templateUrl: './stepper.component.html',
 })
 export class StepperComponent implements AfterContentInit {
   public readonly activeIndex = input.required<number>()
-  public readonly items = input.required<string[]>()
+  public readonly linear = input(false)
 
   public readonly steps = contentChildren(StepComponent)
 
   public readonly onStepChange = output<number>()
 
-  protected readonly isNextDisabled = computed(() => {
-    return this.activeIndex() >= this.items().length - 1
-  })
-
   constructor() {
-    effect(() => {
-      console.log('Active Index:', this.activeIndex())
-    })
+    effect(() => {})
   }
 
   ngAfterContentInit(): void {}
 
-  protected handleStep(step: number) {
+  protected handleStep(step: number): boolean {
+    if (step < 0 || step >= this.steps().length) {
+      return false
+    }
+
+    if (this.linear()) {
+      // Помечаем текущий шаг как interacted ДО проверки — это включает отображение ошибок, как в Material.
+      this.steps()[this.activeIndex()]?.markAsInteracted()
+
+      if (this._anyControlInvalid(step)) {
+        return false
+      }
+    }
+
     this.onStepChange.emit(step)
+    return true
   }
 
-  protected handleNext() {
-    const next = this.activeIndex() + 1
-    if (next < this.items().length) {
-      this.onStepChange.emit(next)
+  private _anyControlInvalid(targetStep: number) {
+    if (!this.linear() || targetStep < 0) {
+      return false
     }
+
+    return this.steps()
+      .slice(0, targetStep)
+      .some(step => {
+        const control = step.stepControl()
+        const incomplete = control
+          ? control.invalid || control.pending || !step.interacted()
+          : !step.completed()
+
+        return incomplete
+      })
+  }
+
+  protected goTo() {
+    const next = this.activeIndex() + 1
+    this.onStepChange.emit(next)
   }
 }

@@ -1,0 +1,35 @@
+<div class="flex justify-center p-4">
+  <div
+    tuiGroup
+    [collapsed]="true"
+  >
+    <button
+      appearance="outline"
+      (click)="setViewport('desktop')"
+      tuiButton
+      type="button"
+      size="s"
+    >
+      Desktop
+    </button>
+    <button
+      tuiButton
+      (click)="setViewport('mobile')"
+      type="button"
+      appearance="outline"
+      size="s"
+    >
+      Mobile
+    </button>
+  </div>
+</div>
+
+<div class="p-4">
+  <div class="" [ngClass]="classes()">
+    <iframe
+      class="w-full"
+      [srcdoc]="htmlRaw().emailTemplate"
+      sandbox="allow-popups"
+      loading="lazy"></iframe>
+  </div>
+</div>

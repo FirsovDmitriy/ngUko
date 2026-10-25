@@ -10,18 +10,17 @@ import { TextFieldState } from './shared/components/multiple-text-field/multiple
 import { DefaultLayoutComponent } from './layout/default-layout.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    TuiRootModule,
-    ReactiveFormsModule,
-    TuiRootModule,
-    TuiDialogModule,
-    DefaultLayoutComponent
-],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }],
+    selector: 'app-root',
+    imports: [
+        TuiRootModule,
+        ReactiveFormsModule,
+        TuiRootModule,
+        TuiDialogModule,
+        DefaultLayoutComponent
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    providers: [{ provide: TUI_SANITIZER, useClass: NgDompurifySanitizer }]
 })
 export class AppComponent {
   title = 'UKO';

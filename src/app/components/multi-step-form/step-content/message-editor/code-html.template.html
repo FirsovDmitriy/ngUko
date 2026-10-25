@@ -1,0 +1,31 @@
+<button
+  (click)="visibleEditor(content, header, 'fullscreen')"
+  tuiButton
+  appearance="flat"
+  size="s"
+>
+  Редактор html
+</button>
+
+<ng-template #header>
+  <div class="p-4">
+    <button
+      appearance="outline"
+      type="button"
+      tuiButton
+      size="s"
+      (click)="closeEditor()"
+    >
+      Сохранить
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #content>
+  <div>
+    <code-editor
+      #editor
+      [formControl]="htmlControl"
+    ></code-editor>
+  </div>
+</ng-template>

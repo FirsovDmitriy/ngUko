@@ -1,0 +1,11 @@
+@switch (messageType()) {
+  @case ('email') {
+    <uko-email></uko-email>
+  }
+  @case ('mobilePush') {
+    <div>Mobile Push</div>
+  }
+  @case ('webPush') {
+    <uko-web-push></uko-web-push>
+  }
+}

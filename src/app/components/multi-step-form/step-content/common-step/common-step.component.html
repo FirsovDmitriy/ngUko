@@ -1,0 +1,60 @@
+<div class="space-y-6">
+  <div class="border-b border-gray-200 pb-4">
+    <h2 class="text-lg font-semibold text-gray-900">Общие настройки</h2>
+    <p class="mt-1 text-sm text-gray-500">
+      Укажите название сообщения и при необходимости запланируйте отправку.
+    </p>
+  </div>
+  <div>
+    <label for="messageName" class="block text-sm font-medium text-gray-700">
+      Название сообщения
+      <span class="text-red-500">*</span>
+    </label>
+    <input
+      type="text"
+      id="messageName"
+      name="messageName"
+      required
+      placeholder="Введите название для сохранения в истории"
+      class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+    />
+    <p class="mt-1 text-xs text-gray-500">
+      Название будет использоваться для сохранения в истории сообщений.
+    </p>
+  </div>
+  <div class="flex items-start">
+    <div class="flex h-5 items-center">
+      <input
+        type="checkbox"
+        id="scheduleDelivery"
+        name="scheduleDelivery"
+        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+      />
+    </div>
+    <div class="ml-3">
+      <label for="scheduleDelivery" class="text-sm font-medium text-gray-700">
+        Запланировать отправку
+      </label>
+      <p class="text-xs text-gray-500">
+        Отложить отправку сообщения на указанную дату и время.
+      </p>
+    </div>
+  </div>
+  <div class="space-y-2">
+    <label
+      for="deliveryDateTime"
+      class="block text-sm font-medium text-gray-700"
+    >
+      Дата и время отправки
+    </label>
+    <input
+      type="datetime-local"
+      id="deliveryDateTime"
+      name="deliveryDateTime"
+      class="block w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+    />
+    <p class="text-xs text-gray-500">
+      Укажите дату и время, когда сообщение должно быть отправлено.
+    </p>
+  </div>
+</div>

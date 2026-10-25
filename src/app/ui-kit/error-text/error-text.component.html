@@ -1,0 +1,12 @@
+@if (content(); as error) {
+  <span class="absolute top-full left-0 text-sm text-orange-600">
+    <span
+      *polymorpheusOutlet="
+        error.message as errorText;
+        context: error.context
+      "
+    >
+      {{ errorText }}
+    </span>
+  </span>
+}

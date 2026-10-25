@@ -1,0 +1,29 @@
+<uko-stepper
+  [linear]="true"
+  (onStepChange)="setActiveIndex($event)"
+  [activeIndex]="currentIndex()"
+>
+  <uko-step
+    [stepControl]="messageTypeControl"
+    label="Выбор типа сообщения"
+    (onInvalid)="messageTypeControl.markAllAsTouched()"
+  >
+    <uko-select-message-type></uko-select-message-type>
+  </uko-step>
+
+  <uko-step
+    label="Редактор Email"
+    [stepControl]="contentForm()"
+    (onInvalid)="contentForm()?.markAllAsTouched()"
+  >
+    <uko-message-editor></uko-message-editor>
+  </uko-step>
+
+  <uko-step
+    label="Общие настройки"
+    (onInvalid)="commonFormControls.markAllAsTouched()"
+    [stepControl]="commonFormControls"
+  >
+    <uko-common-step></uko-common-step>
+  </uko-step>
+</uko-stepper>
