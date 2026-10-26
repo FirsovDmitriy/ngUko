@@ -1,29 +1,34 @@
 <h1 class="mb-2 text-gray-900 text-2xl">Выбор типа сообщения</h1>
-<form class="relative grid grid-cols-[1fr_2fr]">
+<form class="relative grid grid-cols-[2fr_2fr]">
   <div class="" tuiGroup [collapsed]="true">
-   <label tuiBlock="m"> <input tuiRadio type="radio"
-      
-      name="message-type"
-      
-      [formControl]="messageType"
-      value="email"
-    >
+    <label class="flex items-center" tuiBlock="m">
+      <input
+        tuiRadio
+        type="radio"
+        name="messageType"
+        [formControl]="messageType"
+        value="email"
+      />
       Email
     </label>
-   <label tuiBlock="m"> <input tuiRadio type="radio"
-      
-      [formControl]="messageType"
-      
-      value="mobilePush"
-    >
+    <label class="flex items-center" tuiBlock="m">
+      <input
+        tuiRadio
+        name="messageType"
+        type="radio"
+        [formControl]="messageType"
+        value="mobilePush"
+      />
       Mobile push
     </label>
-   <label tuiBlock="m"> <input tuiRadio type="radio"
-      
-      [formControl]="messageType"
-      
-      value="webPush"
-    >
+    <label class="flex items-center" tuiBlock="m">
+      <input
+        tuiRadio
+        name="messageType"
+        type="radio"
+        [formControl]="messageType"
+        value="webPush"
+      />
       Web push
     </label>
   </div>

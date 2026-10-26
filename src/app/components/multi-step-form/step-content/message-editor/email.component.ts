@@ -1,7 +1,10 @@
-import { TuiInputModule } from "@taiga-ui/legacy";
-import { TuiButton } from "@taiga-ui/core";
-import { TuiEditor, TuiEditorSocket } from "@taiga-ui/editor";
-import { ChangeDetectionStrategy, Component, inject, INJECTOR, Injector } from '@angular/core'
+import { TuiButton } from '@taiga-ui/core'
+import { TuiEditor } from '@taiga-ui/editor'
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+} from '@angular/core'
 import {
   FormArray,
   FormBuilder,
@@ -10,7 +13,8 @@ import {
   Validators,
 } from '@angular/forms'
 import {
-  TuiEditorTool,
+  TUI_EDITOR_DEFAULT_TOOLS,
+  provideTuiEditor
 } from '@taiga-ui/editor'
 import { DomSanitizer } from '@angular/platform-browser'
 import { CodeHtmlComponent } from './code-html.component'
@@ -18,21 +22,29 @@ import { MultiStepFormManager } from '../../_state/multi-step-form.manager'
 import { steps } from '../../constants'
 import { ErrorTextComponent } from '../../../../ui-kit/error-text'
 import { TextfieldComponent } from '../../../../ui-kit/textfield'
+import { useEmailTemplateQuery } from '../../services/messages-queries.service'
 
 @Component({
   selector: 'uko-email',
   imports: [
-    TuiEditorSocket,
     TuiEditor,
     ReactiveFormsModule,
     TuiButton,
     ErrorTextComponent,
     TextfieldComponent,
-    CodeHtmlComponent
+    CodeHtmlComponent,
   ],
   templateUrl: './email.template.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: [
+    provideTuiEditor({
+      detailsContent: true,
+      image: true,
+      detailsSummary: true,
+      source: true,
+      details: true
+    }),
+  ],
 })
 export class EmailComponent {
   private readonly fb = inject(FormBuilder)
@@ -41,20 +53,16 @@ export class EmailComponent {
     MultiStepFormManager,
   ).getForm<FormGroup>(steps.MESSAGE_CONTENT)
 
-  protected readonly tools = [
-    TuiEditorTool.Undo,
-    TuiEditorTool.Bold,
-    TuiEditorTool.Italic,
-    TuiEditorTool.Link,
-  ]
-
-  get emailAttachments(): FormArray {
-    return this.emailForm?.get('attachments') as FormArray
-  }
+  readonly tools = TUI_EDITOR_DEFAULT_TOOLS
+  private readonly emailTemplateQuery = useEmailTemplateQuery()
 
   get safeTemplate() {
     const val = this.emailForm?.controls['emailTemplate'].value
     return val ? this.sanitizer.bypassSecurityTrustHtml(val) : ''
+  }
+
+  get attachmentControl() {
+    return this.emailForm?.get('attachments') as FormArray
   }
 
   constructor() {
@@ -71,10 +79,17 @@ export class EmailComponent {
   }
 
   protected addAttachment(): void {
-    this.emailAttachments.push(this.createAttachmentGroup())
+    this.attachmentControl?.push(this.createAttachmentGroup())
   }
 
-  protected loadDefaultTemplate() {
-    //
+  protected async loadDefaultTemplate(): Promise<void> {
+    const { data } = await this.emailTemplateQuery.refetch()
+
+    if (data !== undefined) {
+      // @ts-ignore
+      console.log('Data:', data?.dataDataReceived.htmlContent)
+      // @ts-ignore
+      this.emailForm?.controls['emailTemplate'].setValue(data?.dataDataReceived[0].htmlContent)
+    }
   }
 }

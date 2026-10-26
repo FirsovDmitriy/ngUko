@@ -122,18 +122,16 @@
             <label class="block text-sm font-medium text-gray-700 mb-2">
               Шаблон письма <span class="text-red-500">*</span>
             </label>
-            <div class="flex justify-center">
+            <div class="">
               <uko-code-html></uko-code-html>
+              <tui-editor
+                formControlName="emailTemplate"
+                [tools]="tools"
+              ></tui-editor>
               <uko-error-text
                 errorText="This field is required"
                 [control]="form.controls['emailTemplate']"
               ></uko-error-text>
-
-              <!-- <tui-editor
-              formControlName="emailTemplate"
-              [tools]="tools"
-            ></tui-editor> -->
-
             </div>
           </div>
           <div class="border-t border-gray-200 pt-6">
